@@ -1,0 +1,8 @@
+DF<- read.csv("USvideos.csv")
+DF$trending_date<- as.Date(DF$trending_date,format="%y.%d.%m")
+library(tidyverse) 
+DF2<- separate(DF,col=publish_time,into=c("pdate","ptime"),sep="T")  
+DF2$pdate<- as.Date(DF2$pdate,format="%Y-%m-%d") 
+library(stringr)
+DF2$title<- str_to_title(DF2$title) 
+View(DF2)
